@@ -22,7 +22,6 @@ class MainActivity : FlutterActivity() {
 
                     }
                     "handleRingTone" -> {
-                        android.util.Log.d("RINGTONE", "YOUCALLEDINSIDEHERE")
                         try {
                             val ringtoneName = call.argument<String>("name")
                             if (ringtoneName == null) {
