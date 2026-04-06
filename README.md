@@ -102,11 +102,11 @@ This project is built as a **learning and demonstration project** to:
 
 ## ios Screenshot:
 
-![ios.png](lib/assets/images/ios.png)
+![ios.png](assets/images/ios.png)
 
 ## Android Screenshot:
 
-![android.png](lib/assets/images/android.png)
+![android.png](assets/images/android.png)
 
 ## 👨‍💻 Author
 

@@ -13,12 +13,13 @@ class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        val ringtoneService = RingtoneService(this)
+
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL)
             .setMethodCallHandler { call, result ->
                 when (call.method) {
                     "getRingTones" -> {
-                        val ringTones = getRingTones(this)
-                        result.success(ringTones)
+                        result.success(ringtoneService.getRingTones())
 
                     }
                     "handleRingTone" -> {
@@ -28,7 +29,7 @@ class MainActivity : FlutterActivity() {
                                 result.error("NULL_NAME", "Ringtone name is null", null)
                                 return@setMethodCallHandler
                             }
-                            handleSelectedRingtone(ringtoneName)
+                            ringtoneService.saveSelectedRingtone(ringtoneName)
                             result.success("Received: $ringtoneName")
                         } catch (e: Exception) {
                             result.error("ERROR", e.message, null)
