@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late Future<List<String>> _ringtoneFuture;
 
   Future<List<String>> _getRingtones() async {
-    const channel = MethodChannel('flutter_channel');
+    const channel = MethodChannel('ringtone_channel');
     final tones = await channel.invokeListMethod('getRingTones');
     return tones?.cast<String>() ?? [];
   }

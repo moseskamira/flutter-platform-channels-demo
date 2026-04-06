@@ -9,7 +9,7 @@ import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
 
-    private val CHANNEL = "flutter_channel"
+    private val CHANNEL = "ringtone_channel"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -22,6 +22,7 @@ class MainActivity : FlutterActivity() {
                         result.success(ringtoneService.getRingTones())
 
                     }
+
                     "handleRingTone" -> {
                         try {
                             val ringtoneName = call.argument<String>("name")
@@ -38,6 +39,8 @@ class MainActivity : FlutterActivity() {
 
                 }
             }
+        EventChannel(flutterEngine.dartExecutor.binaryMessenger, "location_channel")
+            .setStreamHandler(LocationStreamHandler(this))
     }
 
     private fun getRingTones(context: Context): List<String> {
