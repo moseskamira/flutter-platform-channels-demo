@@ -3,7 +3,7 @@ import UIKit
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
-private let CHANNEL = "flutter_channel"
+private let CHANNEL = "ringtone_channel"
 
   override func application(
     _ application: UIApplication,

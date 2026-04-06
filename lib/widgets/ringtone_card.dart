@@ -24,7 +24,7 @@ class RingToneCard extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () async {
-          const channel = MethodChannel('flutter_channel');
+          const channel = MethodChannel('ringtone_channel');
           await channel.invokeMethod('handleRingTone', {'name': ringTone});
         },
         leading: Container(
