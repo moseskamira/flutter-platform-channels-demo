@@ -6,6 +6,7 @@ import android.media.RingtoneManager
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.EventChannel
 
 class MainActivity : FlutterActivity() {
 
@@ -19,7 +20,7 @@ class MainActivity : FlutterActivity() {
             .setMethodCallHandler { call, result ->
                 when (call.method) {
                     "getRingTones" -> {
-                        result.success(ringtoneService.getRingTones())
+                        result.success(ringtoneService.getRingTonesForDisplay())
 
                     }
 
@@ -39,21 +40,6 @@ class MainActivity : FlutterActivity() {
 
                 }
             }
-        EventChannel(flutterEngine.dartExecutor.binaryMessenger, "location_channel")
-            .setStreamHandler(LocationStreamHandler(this))
-    }
-
-    private fun getRingTones(context: Context): List<String> {
-        val manager = RingtoneManager(context)
-        manager.setType(RingtoneManager.TYPE_RINGTONE)
-        val cursor: Cursor = manager.cursor
-        val list: MutableList<String> = mutableListOf()
-        while (cursor.moveToNext()) {
-            val notificationTitle: String = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
-            list.add(notificationTitle)
-        }
-        return list
-
     }
 
     private fun handleSelectedRingtone(name: String) {

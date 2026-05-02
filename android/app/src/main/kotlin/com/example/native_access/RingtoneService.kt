@@ -6,7 +6,7 @@ import android.media.RingtoneManager
 
 class RingtoneService(private val context: Context) {
 
-    fun getRingTones(): List<String> {
+    fun getRingTonesForDisplay(): List<String> {
         val manager = RingtoneManager(context)
         manager.setType(RingtoneManager.TYPE_RINGTONE)
         val cursor: Cursor = manager.cursor
