@@ -21,6 +21,7 @@ class MainActivity : FlutterActivity() {
                 when (call.method) {
                     "getRingTones" -> {
                         result.success(ringtoneService.getRingTonesForDisplay())
+                        //result.success(getStudentsNames())
 
                     }
 
@@ -40,6 +41,10 @@ class MainActivity : FlutterActivity() {
 
                 }
             }
+    }
+
+    private fun getStudentsNames(): List<String> {
+        return listOf("Moses", "Kamira", "James", "Honest")
     }
 
     private fun handleSelectedRingtone(name: String) {
